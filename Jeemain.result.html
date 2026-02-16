@@ -1,69 +1,49 @@
-data:text/html,
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main 2026 - Score Card</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f2f5; text-align: center; }
-        .header { background: #0b4a8f; color: white; padding: 15px; font-weight: bold; border-bottom: 4px solid #ff9933; }
-        .login-box { max-width: 360px; margin: 30px auto; background: white; padding: 25px; border-radius: 8px; border-top: 5px solid #0b4a8f; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .captcha { background: #eee; padding: 10px; margin: 10px 0; font-weight: bold; letter-spacing: 5px; font-size: 20px; color: #333; border: 1px dashed #999; }
-        .btn { background: #0b4a8f; color: white; border: none; padding: 14px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px; }
-        #resultArea { display: none; background: white; min-height: 100vh; }
-        .res-img { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; image-rendering: -webkit-optimize-contrast; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 10px; text-align: center; }
+        .header { background: #0b4a8f; color: white; padding: 15px; font-weight: bold; margin-bottom: 20px; }
+        .login-box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); max-width: 360px; margin: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { background: #0b4a8f; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+        #resultArea { display: none; }
+        .res-img { width: 100%; max-width: 600px; margin-top: 10px; border: 1px solid #ddd; }
     </style>
 </head>
 <body>
 
 <div id="loginPage">
-    <div class="header">Joint Entrance Examination (Main) - 2026</div>
+    <div class="header">JEE (MAIN) 2026 - SESSION 1 LOGIN</div>
     <div class="login-box">
-        <h3 style="color:#0b4a8f; margin-top:0;">Candidate Login</h3>
         <input type="text" id="appNo" placeholder="Application Number">
         <input type="password" id="pass" placeholder="Password">
-        <div class="captcha">8B4D6C</div>
-        <input type="text" id="cap" placeholder="Enter Security Pin">
-        <button class="btn" onclick="checkLogin()">Submit</button>
+        <button class="btn" onclick="checkLogin()">View Result</button>
     </div>
 </div>
 
 <div id="resultArea">
-    <div class="header" style="font-size:14px;">JEE (MAIN) 2026 - SCORE CARD</div>
-    <img id="resImg" class="res-img" src="">
-    <button onclick="location.reload()" style="margin:20px; padding:10px 25px; border-radius:20px; background:#0b4a8f; color:white; border:none; cursor:pointer;">Logout & Back</button>
+    <div class="header">JEE (MAIN) 2026 - SCORE CARD</div>
+    <img src="159.jpg" class="res-img"> <img src="334.jpg" class="res-img"> <br><br>
+    <button class="btn" onclick="location.reload()" style="max-width:200px;">Logout & Back</button>
 </div>
 
 <script>
 function checkLogin() {
     var app = document.getElementById('appNo').value;
-    var password = document.getElementById('pass').value;
-    var captcha = document.getElementById('cap').value;
-
-    if(captcha.toUpperCase() !== "8B4D6C") { 
-        alert("Invalid Security Pin!"); 
-        return; 
+    var p = document.getElementById('pass').value;
+    
+    // Aapka Sahi Application No aur Password
+    if(app === "260311323096" && (p === "Rahul@123" || p === "Prinsh@123")) {
+        document.getElementById('loginPage').style.display = "none";
+        document.getElementById('resultArea').style.display = "block";
+    } else {
+        alert("Invalid Details! Please try again.");
     }
-
-    // 1. Prinsh Jain (Naya App No aur Nayi Image)
-    if(app === "260311316725" && password === "Prinsh@123") {
-        document.getElementById('resImg').src = "https://i.postimg.cc/4y6FBGG5/Picsart-26-02-16-16-17-29-960.jpg"; 
-        showResult();
-    } 
-    // 2. Anubhav Jain (Naya App No aur Nayi Image)
-    else if(app === "260311323096" && password === "Rahul@123") {
-        document.getElementById('resImg').src = "https://i.postimg.cc/rFTHzDGB/Picsart-26-02-16-16-15-53-528.jpg"; 
-        showResult();
-    } 
-    else {
-        alert("Invalid Application Number or Password!");
-    }
-}
-
-function showResult() {
-    document.getElementById('loginPage').style.display = 'none';
-    document.getElementById('resultArea').style.display = 'block';
-    window.scrollTo(0,0);
 }
 </script>
+
 </body>
 </html>
