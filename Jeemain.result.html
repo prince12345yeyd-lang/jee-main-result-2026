@@ -5,42 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEE Main 2026 - Score Card</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 10px; text-align: center; }
-        .header { background: #0b4a8f; color: white; padding: 15px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; }
-        .login-box { background: white; padding: 25px; border-radius: 10px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2); max-width: 360px; margin: auto; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; text-align: center; }
+        .header { background: #0b4a8f; color: white; padding: 15px; font-weight: bold; font-size: 18px; }
+        .container { padding: 20px; }
+        .login-box { background: white; padding: 25px; border-radius: 10px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2); max-width: 360px; margin: 40px auto; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; outline: none; }
         .btn { background: #0b4a8f; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 16px; margin-top: 10px; }
         #resultArea { display: none; background: white; min-height: 100vh; }
-        .res-img { width: 100%; max-width: 800px; display: block; margin: 0 auto 15px auto; border: 1px solid #ddd; }
-        .footer-text { font-size: 12px; color: #666; margin-top: 20px; padding: 10px; }
+        .res-img { width: 100%; max-width: 800px; display: block; margin: 0 auto; border: none; }
+        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div id="loginPage">
     <div class="header">JEE (MAIN) 2026 - SESSION 1 LOGIN</div>
-    <div class="login-box">
-        <p style="color:#0b4a8f; font-weight:bold;">View Result / Score Card</p>
-        <input type="text" id="appNo" placeholder="Application Number (12 Digit)">
-        <input type="password" id="pass" placeholder="Password">
-        <button class="btn" onclick="checkLogin()">View Result</button>
-        <p class="footer-text">NIC - National Informatics Centre</p>
+    <div class="container">
+        <div class="login-box">
+            <p style="color:#0b4a8f; font-weight:bold; margin-bottom:20px;">View Result / Score Card</p>
+            <input type="text" id="appNo" placeholder="Application Number">
+            <input type="password" id="pass" placeholder="Password">
+            <button class="btn" onclick="checkLogin()">View Result</button>
+            <p class="footer-text">NIC - National Informatics Centre</p>
+        </div>
     </div>
 </div>
 
 <div id="resultArea">
-    <div class="header">JEE (MAIN) 2026 - SCORE CARD</div>
-    <img src="159.jpg" alt="Admit Card" class="res-img"> <img src="334.jpg" alt="Score Card" class="res-img"> <div style="padding-bottom: 50px;">
+    <div class="header" style="font-size:14px; padding:10px;">JEE (MAIN) 2026 - SCORE CARD</div>
+    <img src="334.jpg" alt="Score Card" class="res-img"> 
+    
+    <div style="padding: 20px 0 50px 0;">
         <button class="btn" onclick="location.reload()" style="max-width:200px;">Logout & Back</button>
     </div>
 </div>
 
 <script>
 function checkLogin() {
-    var app = document.getElementById('appNo').value;
+    var app = document.getElementById('appNo').value.trim();
     var p = document.getElementById('pass').value;
     
-    // Anubhav ka App No
+    // Anubhav ka App No jo aapne bataya
     var correctApp = "260311323096"; 
     
     if(app === correctApp && (p === "Rahul@123" || p === "Prinsh@123")) {
@@ -48,7 +53,7 @@ function checkLogin() {
         document.getElementById('resultArea').style.display = "block";
         window.scrollTo(0, 0);
     } else {
-        alert("Ghalat details! Application Number check karein.");
+        alert("Invalid Details! Please check your Application Number.");
     }
 }
 </script>
